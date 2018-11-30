@@ -35,15 +35,22 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 // 根组件
 // eslint-disable-next-line no-unused-vars
+// var my = new Vue({
+//   el: '#app',
+//   router,
+//   components: { App },
+//   data: {
+//     title: 'hello main.js' // 数据渲染
+//   },
+//   components: {
+//     "my-header": header
+//   }
+// // eslint-disable-next-line eol-last
+// })
 var my = new Vue({
   el: '#app',
-  router,
-  components: { App },
-  data: {
-    title: 'hello main.js' // 数据渲染
-  },
-  components: {
-    "my-header": header
+  render: function (h) {
+    return h(app)
   }
 // eslint-disable-next-line eol-last
 })
