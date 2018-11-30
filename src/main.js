@@ -25,7 +25,7 @@ var headerChild = {
 }
 
 var header = {
-  template: '<p v-html="fatherHeader" v-text="113" v-on:keydown.enter=""><my-header-child></my-header-child></p>',
+  template: '<p v-html="fatherHeader" v-text="1132" v-on:keydown.enter=""><my-header-child></my-header-child></p>',
   components: {
     "my-header-child": headerChild
   }
