@@ -1,31 +1,43 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png" alt="">
-    <h1>app.vue</h1>
-    <router-view></router-view>
-    <router-link :to="{path: '/apple'}">to apple</router-link>
-    <router-link :to="{name: 'appleRoute'}">to apple</router-link>
-    <router-link :to="{path: '/banana'}">to banana</router-link>
-    <router-link :to="{path: '/apple/red'}">to appleREd</router-link>
-    {{totalPrice}}
-    <vuex1></vuex1>
-    <vuex2></vuex2>
+  <div id="appVue">
+    <Aside></Aside> 
+    <Header></Header>
+   
+    <div class="content">
+        <div class="container" :style="{'height':contentH+'px'}">
+          <router-view></router-view>
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Vuex1 from "./components/vuex1"
-import Vuex2 from "./components/vuex2"
+import Header from './components/header'
+import Aside from './components/aside'
 
 export default {
-  name: 'app',
   components: {
-    Vuex1,
-    Vuex2
+    Header,Aside
   },
-  computed: {
-    totalPrice () {
-      return this.$store.state.totalPrice
+  name: 'App',
+    data () {
+    return {
+      contentH:300,
+      calHeight:{
+          height: this.contentH+"px"
+      }
+    }
+  },
+  mounted () {
+    //   页面加载完成计算可视窗口高度并赋值
+    let h = document.documentElement.clientHeight-70;
+    this.contentH= h;
+
+    window.onresize = () => {
+      return (() => {
+        let h = document.documentElement.clientHeight-70;
+        this.contentH= h;
+      })()
     }
   }
 }
@@ -39,5 +51,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.content{
+    width:88%;
+    position: fixed;
+    top: 52px;
+    left: 12%; 
+}
+.content .container{
+    background: #efefef;
+    margin: 10px 6px 0 4px;
 }
 </style>
