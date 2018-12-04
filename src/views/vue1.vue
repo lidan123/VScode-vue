@@ -1,6 +1,9 @@
 <template>
   <div class="content-box">
     {{msg}}
+    {{$store.state.count}}
+    <button @click="add">+</button>
+    <button @click="minus">-</button>
   </div>
 </template>
 
@@ -13,6 +16,14 @@ export default {
   data () {
     return {
       msg: 'vue1加载到了！！！！'
+    }
+  },
+  methods: {
+    add () {
+      this.$store.commit('increment',5)
+    },
+    minus () {
+      this.$store.commit('decrease',5)
     }
   }
 }

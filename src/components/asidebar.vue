@@ -1,19 +1,19 @@
 <template>
   <div class="aside">
     <div class="aside-logo"></div>
-    <!-- <img src="../common/images/logo.png" alt="" class="aside-logo"> -->
+
     <ul class="aside-ul">
-      <router-link v-for="item in ulList" :key="item" tag="li" :to="{path: item.url}">{{ item.text }}</router-link>
+      <router-link v-for="item in ulList" :key="item.text" tag="li" :to="{path: item.url}"><i class="el-icon-message"></i>{{ item.text }}</router-link>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'aside',
+  name: 'asidebar',
   data () {
     return {
-      msg: 'I am aside',
+      msg: 'I am asidebar',
       ulList:[
         {
           text:'PAGE1',
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     navigator () {
-      
+
     }
   }
 }
@@ -40,6 +40,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .el-header {
+    background-color: #B3C0D1;
+    color: #333;
+    line-height: 60px;
+  }
+
+  .el-aside {
+    color: #333;
+  }
 h1, h2 {
   font-weight: normal;
 }

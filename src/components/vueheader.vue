@@ -2,14 +2,14 @@
   <div class="header">
     <div class="header-left">vue后台系统</div>
     <ul class="header-right">
-      <li v-for=" item in ulList " :key="item">{{ item.text }}</li>
+      <li v-for=" item in ulList " :key="item.text">{{ item.text }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'header',
+  name: 'vueheader',
   data () {
     return {
       msg: 'I am header',

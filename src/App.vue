@@ -1,31 +1,49 @@
 <template>
   <div id="appVue">
-    <Aside></Aside> 
-    <Header></Header>
-   
-    <div class="content">
+    <div v-if="isLogin">
+      <aside-bar></aside-bar>
+      <vue-header></vue-header>
+      <div class="content">
         <div class="container" :style="{'height':contentH+'px'}">
           <router-view></router-view>
         </div>
+      </div>
     </div>
+
+    <div v-else>
+      <login v-on:listenToChildEvent="showData"></login>
+    </div>
+
   </div>
 </template>
 
 <script>
-import Header from './components/header'
-import Aside from './components/aside'
+import VueHeader from './components/vueheader'
+import AsideBar from './components/asidebar'
+import Login from './components/login'
 
 export default {
   components: {
-    Header,Aside
+    VueHeader,AsideBar,Login
   },
   name: 'App',
     data () {
     return {
+      isLogin: false,
       contentH:300,
       calHeight:{
           height: this.contentH+"px"
       }
+    }
+  },
+  methods: {
+    showData (data) {
+      if(data == "hasLogin"){
+        this.isLogin =true
+      }else{
+        this.isLogin =false
+      }
+      console.log("data:"+data)
     }
   },
   mounted () {
@@ -57,7 +75,7 @@ export default {
     width:88%;
     position: fixed;
     top: 52px;
-    left: 12%; 
+    left: 12%;
 }
 .content .container{
     background: #efefef;
