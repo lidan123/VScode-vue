@@ -94,7 +94,7 @@ a {
   background:#53c3f9;
 }
 .login-content{
-  width: 80%;
+  width: 70%;
   margin: auto;
   height: 100%;
   /* 渐变色兼容 */
@@ -115,7 +115,7 @@ a {
   font-weight: 600;
   font-size: 80px;
   margin: 0;
-  padding: 60px 0 18px 0
+  padding: 10% 0 18px 0
 }
 
 .login-content h2{
@@ -126,15 +126,25 @@ a {
 }
 
 .form{
-  width: 50%;
+  width: 36%;
   margin: 80px auto
 }
 .btn-submit{
   text-align: center
 }
-.btn-submit{
-
-} button{
+button{
   margin: auto
+}
+.el-form-item{
+  margin-bottom: 24px
+}
+.el-button{
+  padding: 12px 96px
+}
+.btn-submit button:first-child{
+  float: left;
+}
+.btn-submit button:last-child{
+  float: right;
 }
 </style>
