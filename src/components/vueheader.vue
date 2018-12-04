@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-left">vue后台系统</div>
     <ul class="header-right">
-      <li v-for=" item in ulList " :key="item.text">{{ item.text }}</li>
+      <li v-for=" item in ulList " :key="item.text"><router-link :to="{path:item.url}">{{ item.text }}</router-link> </li>
     </ul>
   </div>
 </template>
@@ -16,11 +16,11 @@ export default {
       ulList:[
         {
           text:'登录',
-          url:"/index"
+          url:"/login"
         },
         {
           text:'退出',
-          url:"/index"
+          url:"/login"
         }
       ],
       show:true
@@ -43,7 +43,9 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  /* color: #42b983; */
+  color: #fff;
+  text-decoration: none
 }
 
 .header{

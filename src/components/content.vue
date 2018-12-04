@@ -1,12 +1,23 @@
 <template>
-  <div id="appVue">
-      <router-view></router-view>
+  <div id="content">
+    <aside-bar></aside-bar>
+    <vue-header></vue-header>
+    <div class="content">
+      <div class="container" :style="{'height':contentH+'px'}">
+        <router-view></router-view>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import VueHeader from './vueheader'
+import AsideBar from './asidebar'
 
 export default {
+  components: {
+    VueHeader,AsideBar
+  },
   name: 'App',
     data () {
     return {

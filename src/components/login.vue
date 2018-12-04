@@ -15,7 +15,7 @@
           <el-input v-model.number="form.verify" prefix-icon="el-icon-mobile-phone" clearable placeholder="验证码"></el-input>
         </el-form-item>
         <p class="btn-submit">
-          <el-button type="primary" plain="">注册</el-button>
+          <router-link tag="div" :to="{path: '/register'}" class="register-btn"><el-button type="primary" plain="">注册</el-button></router-link>
           <el-button type="primary" @click="onsubmit('form')">登录</el-button>
         </p>
       </el-form>
@@ -56,7 +56,7 @@ export default {
     onsubmit (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$emit("listenToChildEvent","hasLogin")
+          this.$router.push('/login')
         } else {
           console.log('error submit!!');
           return false;
@@ -130,7 +130,11 @@ a {
   margin: 80px auto
 }
 .btn-submit{
-  text-align: center
+  text-align: center;
+  display: flex;
+}
+.register-btn{
+  flex: 1
 }
 button{
   margin: auto
@@ -139,7 +143,7 @@ button{
   margin-bottom: 24px
 }
 .el-button{
-  padding: 12px 96px
+  flex: 1
 }
 .btn-submit button:first-child{
   float: left;

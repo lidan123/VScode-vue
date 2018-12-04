@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable import/first */
 /* eslint-disable space-unary-ops */
 /* eslint-disable new-cap */
@@ -24,6 +25,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Vue1 from './views/vue1'
 import Vue2 from './views/vue2'
 import Vue3 from './views/vue3'
+import Login from './components/Login'
+import Register from './components/register'
+import Content from './components/content'
 
 Vue.use(VRouter)
 Vue.use(Vuex)
@@ -34,19 +38,40 @@ let router = new VRouter({
   mode: 'history',
   routes: [
     {
-      path: '/Vue1',
-      meta: 'meta1页面标题',
-      component: Vue1
+      path: '/',
+      redirect: 'Login'
     },
     {
-      path: '/Vue2',
-      meta: 'meta2页面标题',
-      component: Vue2
+      path: '/Register',
+      meta: '注册',
+      component: Register
+    },
+     {
+      path: '/Login',
+      meta: '登录',
+      component: Login
     },
     {
-      path: '/Vue3',
-      meta: 'meta3页面标题',
-      component: Vue3
+      path: '/Content',
+      meta: '登录',
+      component: Content,
+      children: [
+        {
+          path: '/Vue1',
+          meta: 'meta1页面标题',
+          component: Vue1
+        },
+         {
+          path: '/Vue2',
+          meta: 'meta2页面标题',
+          component: Vue2
+        },
+        {
+          path: '/Vue3',
+          meta: 'meta3页面标题',
+          component: Vue3
+        }
+      ]
     }
   ]
 })
