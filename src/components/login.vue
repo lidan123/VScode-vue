@@ -1,7 +1,7 @@
 <template>
   <div class="loginBg">
     <div class='login-content'>
-      <h1>VUE</h1>
+      <h1 :style="{paddingTop:contentH+'px',fontSize: 20+'px'}">VUE</h1>
       <h2>统一管理平台</h2>
 
       <el-form ref="form" :rules="rules" status-icon :model="form" class="form">
@@ -14,10 +14,10 @@
         <el-form-item prop="verify">
           <el-input v-model.number="form.verify" prefix-icon="el-icon-mobile-phone" clearable placeholder="验证码"></el-input>
         </el-form-item>
-        <p class="btn-submit">
-          <router-link tag="div" :to="{path: '/register'}" class="register-btn"><el-button type="primary" plain="">注册</el-button></router-link>
-          <el-button type="primary" @click="onsubmit('form')">登录</el-button>
-        </p>
+        <div class="btn-submit">
+          <router-link tag="div" :to="{path: '/register'}" class="register-btn btn-group"><el-button type="primary" plain="">注册</el-button></router-link>
+          <div class="btn-group"><el-button type="primary" @click="onsubmit('form')">登录</el-button></div>
+        </div>
       </el-form>
     </div>
   </div>
@@ -30,6 +30,7 @@ export default {
   data () {
     return {
       msg: 'I am login',
+      contentH:80,
       form: {
         name: '',
         password: '',
@@ -62,6 +63,20 @@ export default {
           return false;
         }
       });
+    }
+  },
+  mounted () {
+    //   页面加载完成计算可视窗口高度并赋值
+    let h = document.documentElement.clientHeight-500;
+    this.contentH= h/2;
+    console.log(this.contentH)
+
+    window.onresize = () => {
+      return (() => {
+        let h = document.documentElement.clientHeight-500;
+        this.contentH= h/2;
+    console.log(this.contentH)
+      })()
     }
   }
 }
@@ -115,7 +130,7 @@ a {
   font-weight: 600;
   font-size: 80px;
   margin: 0;
-  padding: 10% 0 18px 0
+  padding: 8% 0 1% 0
 }
 
 .login-content h2{
@@ -127,14 +142,15 @@ a {
 
 .form{
   width: 36%;
-  margin: 80px auto
+  margin: 5% auto
 }
 .btn-submit{
   text-align: center;
+  display: -webkit-flex;
   display: flex;
-}
-.register-btn{
-  flex: 1
+  /* for uc */
+  display: -webkit-box;
+  display: -ms-flexbox; /* TWEENER - IE 10 */
 }
 button{
   margin: auto
@@ -142,13 +158,38 @@ button{
 .el-form-item{
   margin-bottom: 24px
 }
+.btn-submit .btn-group{
+  -ms-flex: 1; /* IE 10 */
+  -webkit-flex: 1;
+  flex: 1;
+  /* for uc */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  float: left\9;
+  _float: left;
+  *float: left;
+  width: 48%\9;
+  _width: 48%;
+  *width: 48%;
+  display: inline-block\9;
+  _display: inline-block;
+  *display: inline-block;
+}
+.register-btn{
+  float: right\9;
+  _float: right;
+  *float: right;
+}
 .el-button{
-  flex: 1
+  width: 100%;
 }
-.btn-submit button:first-child{
-  float: left;
+.btn-group:first-child{
+  padding-right: 4px
 }
-.btn-submit button:last-child{
-  float: right;
+.btn-group:last-child{
+  padding-left: 4px
 }
 </style>
+
+
